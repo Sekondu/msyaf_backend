@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+model User {
+  id String @id @default(uuid())
+  phone Int
+  password String @unique
+  farms farm[]
+  Bookings BookingRequest[]
+  created_at DateTime @default(now())
+}
+
+model farm {
+  id String @id @default(uuid())
+  name String
+  city String
+  owner_id String
+  cap Int
+  tagline String
+  media Media[]
+  tiers Tier[]
+  Bookings BookingRequest[]
+  availablitiy DayAvailability[]
+  busy DayBusy[]
+  amens String[]
+  desc String
+
+  owner User @relation(fields: [owner_id], references: [id], onDelete: Cascade)
+
+  created_at DateTime @default(now())
+}
+
+model DayAvailability {
+  farm_id String
+  month   Int
+  day     Int
+  tier_id String
+  farm    farm  @relation(fields: [farm_id], references: [id], onDelete: Cascade)
+  tier    Tier @relation(fields: [tier_id], references: [id], onDelete: Cascade)
+  @@unique([farm_id, month, day])
+}
+
+model DayBusy {
+  farm_id String
+  month   Int
+  day     Int
+  tier_id String
+  farm    farm  @relation(fields: [farm_id], references: [id], onDelete: Cascade)
+  @@unique([farm_id, month, day])
+}
+
+model Media {
+  id           String    @id @default(uuid())
+  url          String
+  farm_id     String
+  name         String
+  mime         String
+  size         Int
+  add_date     DateTime @default(now())
+
+  farm farm @relation(fields: [farm_id], references: [id], onDelete: Cascade)
+}
+
+model Tier {
+  id String @id @default(uuid())
+  name String
+  farm_id String
+  syp Int?
+  usd Int?
+  daysAvailable DayAvailability[]
+  start String
+  end String
+
+  created_at DateTime @default(now())
+
+  farm farm @relation(fields: [farm_id], references: [id], onDelete: Cascade)
+}
+
+model BookingRequest {
+  id String @id @default(uuid())
+  farm_id String
+  user_id String
+  name String
+  phone String
+  no_people Int
+  month Int
+  day Int
+  status status_details
+  notes String
+
+  farm farm @relation(fields: [farm_id], references: [id], onDelete: Cascade)
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  created_at DateTime @default(now())
+
+  @@index([user_id])
+}
+
+
+enum status_details {
+  pending
+  approved
+  rejected
+}
