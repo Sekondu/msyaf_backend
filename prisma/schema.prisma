@@ -15,11 +15,18 @@ datasource db {
 
 model User {
   id String @id @default(uuid())
-  phone Int
-  password String @unique
+  name String                                  // added: owner display name (e.g. "أبو العبد")
+  phone String @unique                         // changed: Int -> String @unique (E.164)
+  password String                              // changed: dropped @unique
+  role Role @default(LISTER)                   // added: gate the admin panel
+  status AccountStatus @default(ACTIVE)        // added: admin can suspend without deleting
+  subscription_started_at DateTime?            // added: display/audit
+  subscription_end DateTime?                   // added: source of truth; days_remaining computed on read
   farms farm[]
   Bookings BookingRequest[]
+  subscriptionEvents SubscriptionEvent[]       // added: audit log of admin changes
   created_at DateTime @default(now())
+  updated_at DateTime @updatedAt               // added
 }
 
 model farm {
@@ -37,28 +44,32 @@ model farm {
   amens String[]
   desc String
 
+  // Optional pre-payment (deposit) policy. The toggle + lead time are per-farm;
+  // the deposit AMOUNT is per-tier (see Tier.prepay_amount).
+  prepay_required    Boolean @default(false)   // added
+  prepay_days_before Int?                       // added (deposit due this many days before the first rented day)
+
   owner User @relation(fields: [owner_id], references: [id], onDelete: Cascade)
 
   created_at DateTime @default(now())
+  updated_at DateTime @updatedAt               // added
 }
 
 model DayAvailability {
   farm_id String
-  month   Int
-  day     Int
+  date    DateTime @db.Date                    // changed: month/day Int -> real ISO date
   tier_id String
   farm    farm  @relation(fields: [farm_id], references: [id], onDelete: Cascade)
   tier    Tier @relation(fields: [tier_id], references: [id], onDelete: Cascade)
-  @@unique([farm_id, month, day])
+  @@unique([farm_id, date])                    // changed: was [farm_id, month, day]
 }
 
 model DayBusy {
   farm_id String
-  month   Int
-  day     Int
-  tier_id String
+  date    DateTime @db.Date                    // changed: month/day Int -> real ISO date
+  tier_id String?                              // changed: now nullable (manual block / accepted booking has no tier)
   farm    farm  @relation(fields: [farm_id], references: [id], onDelete: Cascade)
-  @@unique([farm_id, month, day])
+  @@unique([farm_id, date])                    // changed: was [farm_id, month, day]
 }
 
 model Media {
@@ -68,6 +79,7 @@ model Media {
   name         String
   mime         String
   size         Int
+  sort_order   Int       @default(0)           // added: first = cover
   add_date     DateTime @default(now())
 
   farm farm @relation(fields: [farm_id], references: [id], onDelete: Cascade)
@@ -79,6 +91,7 @@ model Tier {
   farm_id String
   syp Int?
   usd Int?
+  prepay_amount Int?          // added: per-tier deposit (SYP thousands); null/0 = none
   daysAvailable DayAvailability[]
   start String
   end String
@@ -95,8 +108,7 @@ model BookingRequest {
   name String
   phone String
   no_people Int
-  month Int
-  day Int
+  days BookingDay[]                             // changed: a booking can span multiple days
   status status_details
   notes String
 
@@ -104,6 +116,29 @@ model BookingRequest {
   user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   created_at DateTime @default(now())
+  updated_at DateTime @updatedAt                // added
+
+  @@index([user_id])
+}
+
+// One rented day within a booking. A booking has one or more of these.
+model BookingDay {                              // added
+  booking_id String
+  date       DateTime @db.Date
+  booking    BookingRequest @relation(fields: [booking_id], references: [id], onDelete: Cascade)
+
+  @@id([booking_id, date])
+}
+
+model SubscriptionEvent {                        // added: audit trail for admin subscription changes
+  id String @id @default(uuid())
+  user_id String
+  old_end DateTime?
+  new_end DateTime?
+  changed_by String
+  created_at DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@index([user_id])
 }
@@ -113,4 +148,14 @@ enum status_details {
   pending
   approved
   rejected
+}
+
+enum Role {                                      // added
+  LISTER
+  ADMIN
+}
+
+enum AccountStatus {                             // added
+  ACTIVE
+  SUSPENDED
 }

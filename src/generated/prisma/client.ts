@@ -76,3 +76,13 @@ export type Tier = Prisma.TierModel
  * 
  */
 export type BookingRequest = Prisma.BookingRequestModel
+/**
+ * Model BookingDay
+ * 
+ */
+export type BookingDay = Prisma.BookingDayModel
+/**
+ * Model SubscriptionEvent
+ * 
+ */
+export type SubscriptionEvent = Prisma.SubscriptionEventModel

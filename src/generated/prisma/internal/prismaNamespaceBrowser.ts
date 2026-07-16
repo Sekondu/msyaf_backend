@@ -57,7 +57,9 @@ export const ModelName = {
   DayBusy: 'DayBusy',
   Media: 'Media',
   Tier: 'Tier',
-  BookingRequest: 'BookingRequest'
+  BookingRequest: 'BookingRequest',
+  BookingDay: 'BookingDay',
+  SubscriptionEvent: 'SubscriptionEvent'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -78,9 +80,15 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UserScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   phone: 'phone',
   password: 'password',
-  created_at: 'created_at'
+  role: 'role',
+  status: 'status',
+  subscription_started_at: 'subscription_started_at',
+  subscription_end: 'subscription_end',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -95,7 +103,10 @@ export const FarmScalarFieldEnum = {
   tagline: 'tagline',
   amens: 'amens',
   desc: 'desc',
-  created_at: 'created_at'
+  prepay_required: 'prepay_required',
+  prepay_days_before: 'prepay_days_before',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type FarmScalarFieldEnum = (typeof FarmScalarFieldEnum)[keyof typeof FarmScalarFieldEnum]
@@ -103,8 +114,7 @@ export type FarmScalarFieldEnum = (typeof FarmScalarFieldEnum)[keyof typeof Farm
 
 export const DayAvailabilityScalarFieldEnum = {
   farm_id: 'farm_id',
-  month: 'month',
-  day: 'day',
+  date: 'date',
   tier_id: 'tier_id'
 } as const
 
@@ -113,8 +123,7 @@ export type DayAvailabilityScalarFieldEnum = (typeof DayAvailabilityScalarFieldE
 
 export const DayBusyScalarFieldEnum = {
   farm_id: 'farm_id',
-  month: 'month',
-  day: 'day',
+  date: 'date',
   tier_id: 'tier_id'
 } as const
 
@@ -128,6 +137,7 @@ export const MediaScalarFieldEnum = {
   name: 'name',
   mime: 'mime',
   size: 'size',
+  sort_order: 'sort_order',
   add_date: 'add_date'
 } as const
 
@@ -140,6 +150,7 @@ export const TierScalarFieldEnum = {
   farm_id: 'farm_id',
   syp: 'syp',
   usd: 'usd',
+  prepay_amount: 'prepay_amount',
   start: 'start',
   end: 'end',
   created_at: 'created_at'
@@ -155,14 +166,33 @@ export const BookingRequestScalarFieldEnum = {
   name: 'name',
   phone: 'phone',
   no_people: 'no_people',
-  month: 'month',
-  day: 'day',
   status: 'status',
   notes: 'notes',
-  created_at: 'created_at'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type BookingRequestScalarFieldEnum = (typeof BookingRequestScalarFieldEnum)[keyof typeof BookingRequestScalarFieldEnum]
+
+
+export const BookingDayScalarFieldEnum = {
+  booking_id: 'booking_id',
+  date: 'date'
+} as const
+
+export type BookingDayScalarFieldEnum = (typeof BookingDayScalarFieldEnum)[keyof typeof BookingDayScalarFieldEnum]
+
+
+export const SubscriptionEventScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  old_end: 'old_end',
+  new_end: 'new_end',
+  changed_by: 'changed_by',
+  created_at: 'created_at'
+} as const
+
+export type SubscriptionEventScalarFieldEnum = (typeof SubscriptionEventScalarFieldEnum)[keyof typeof SubscriptionEventScalarFieldEnum]
 
 
 export const SortOrder = {

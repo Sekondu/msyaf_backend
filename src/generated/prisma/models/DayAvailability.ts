@@ -20,73 +20,45 @@ export type DayAvailabilityModel = runtime.Types.Result.DefaultSelection<Prisma.
 
 export type AggregateDayAvailability = {
   _count: DayAvailabilityCountAggregateOutputType | null
-  _avg: DayAvailabilityAvgAggregateOutputType | null
-  _sum: DayAvailabilitySumAggregateOutputType | null
   _min: DayAvailabilityMinAggregateOutputType | null
   _max: DayAvailabilityMaxAggregateOutputType | null
 }
 
-export type DayAvailabilityAvgAggregateOutputType = {
-  month: number | null
-  day: number | null
-}
-
-export type DayAvailabilitySumAggregateOutputType = {
-  month: number | null
-  day: number | null
-}
-
 export type DayAvailabilityMinAggregateOutputType = {
   farm_id: string | null
-  month: number | null
-  day: number | null
+  date: Date | null
   tier_id: string | null
 }
 
 export type DayAvailabilityMaxAggregateOutputType = {
   farm_id: string | null
-  month: number | null
-  day: number | null
+  date: Date | null
   tier_id: string | null
 }
 
 export type DayAvailabilityCountAggregateOutputType = {
   farm_id: number
-  month: number
-  day: number
+  date: number
   tier_id: number
   _all: number
 }
 
 
-export type DayAvailabilityAvgAggregateInputType = {
-  month?: true
-  day?: true
-}
-
-export type DayAvailabilitySumAggregateInputType = {
-  month?: true
-  day?: true
-}
-
 export type DayAvailabilityMinAggregateInputType = {
   farm_id?: true
-  month?: true
-  day?: true
+  date?: true
   tier_id?: true
 }
 
 export type DayAvailabilityMaxAggregateInputType = {
   farm_id?: true
-  month?: true
-  day?: true
+  date?: true
   tier_id?: true
 }
 
 export type DayAvailabilityCountAggregateInputType = {
   farm_id?: true
-  month?: true
-  day?: true
+  date?: true
   tier_id?: true
   _all?: true
 }
@@ -129,18 +101,6 @@ export type DayAvailabilityAggregateArgs<ExtArgs extends runtime.Types.Extension
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: DayAvailabilityAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: DayAvailabilitySumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: DayAvailabilityMinAggregateInputType
@@ -171,20 +131,15 @@ export type DayAvailabilityGroupByArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   _count?: DayAvailabilityCountAggregateInputType | true
-  _avg?: DayAvailabilityAvgAggregateInputType
-  _sum?: DayAvailabilitySumAggregateInputType
   _min?: DayAvailabilityMinAggregateInputType
   _max?: DayAvailabilityMaxAggregateInputType
 }
 
 export type DayAvailabilityGroupByOutputType = {
   farm_id: string
-  month: number
-  day: number
+  date: Date
   tier_id: string
   _count: DayAvailabilityCountAggregateOutputType | null
-  _avg: DayAvailabilityAvgAggregateOutputType | null
-  _sum: DayAvailabilitySumAggregateOutputType | null
   _min: DayAvailabilityMinAggregateOutputType | null
   _max: DayAvailabilityMaxAggregateOutputType | null
 }
@@ -209,8 +164,7 @@ export type DayAvailabilityWhereInput = {
   OR?: Prisma.DayAvailabilityWhereInput[]
   NOT?: Prisma.DayAvailabilityWhereInput | Prisma.DayAvailabilityWhereInput[]
   farm_id?: Prisma.StringFilter<"DayAvailability"> | string
-  month?: Prisma.IntFilter<"DayAvailability"> | number
-  day?: Prisma.IntFilter<"DayAvailability"> | number
+  date?: Prisma.DateTimeFilter<"DayAvailability"> | Date | string
   tier_id?: Prisma.StringFilter<"DayAvailability"> | string
   farm?: Prisma.XOR<Prisma.FarmScalarRelationFilter, Prisma.farmWhereInput>
   tier?: Prisma.XOR<Prisma.TierScalarRelationFilter, Prisma.TierWhereInput>
@@ -218,36 +172,31 @@ export type DayAvailabilityWhereInput = {
 
 export type DayAvailabilityOrderByWithRelationInput = {
   farm_id?: Prisma.SortOrder
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   tier_id?: Prisma.SortOrder
   farm?: Prisma.farmOrderByWithRelationInput
   tier?: Prisma.TierOrderByWithRelationInput
 }
 
 export type DayAvailabilityWhereUniqueInput = Prisma.AtLeast<{
-  farm_id_month_day?: Prisma.DayAvailabilityFarm_idMonthDayCompoundUniqueInput
+  farm_id_date?: Prisma.DayAvailabilityFarm_idDateCompoundUniqueInput
   AND?: Prisma.DayAvailabilityWhereInput | Prisma.DayAvailabilityWhereInput[]
   OR?: Prisma.DayAvailabilityWhereInput[]
   NOT?: Prisma.DayAvailabilityWhereInput | Prisma.DayAvailabilityWhereInput[]
   farm_id?: Prisma.StringFilter<"DayAvailability"> | string
-  month?: Prisma.IntFilter<"DayAvailability"> | number
-  day?: Prisma.IntFilter<"DayAvailability"> | number
+  date?: Prisma.DateTimeFilter<"DayAvailability"> | Date | string
   tier_id?: Prisma.StringFilter<"DayAvailability"> | string
   farm?: Prisma.XOR<Prisma.FarmScalarRelationFilter, Prisma.farmWhereInput>
   tier?: Prisma.XOR<Prisma.TierScalarRelationFilter, Prisma.TierWhereInput>
-}, "farm_id_month_day">
+}, "farm_id_date">
 
 export type DayAvailabilityOrderByWithAggregationInput = {
   farm_id?: Prisma.SortOrder
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   tier_id?: Prisma.SortOrder
   _count?: Prisma.DayAvailabilityCountOrderByAggregateInput
-  _avg?: Prisma.DayAvailabilityAvgOrderByAggregateInput
   _max?: Prisma.DayAvailabilityMaxOrderByAggregateInput
   _min?: Prisma.DayAvailabilityMinOrderByAggregateInput
-  _sum?: Prisma.DayAvailabilitySumOrderByAggregateInput
 }
 
 export type DayAvailabilityScalarWhereWithAggregatesInput = {
@@ -255,55 +204,47 @@ export type DayAvailabilityScalarWhereWithAggregatesInput = {
   OR?: Prisma.DayAvailabilityScalarWhereWithAggregatesInput[]
   NOT?: Prisma.DayAvailabilityScalarWhereWithAggregatesInput | Prisma.DayAvailabilityScalarWhereWithAggregatesInput[]
   farm_id?: Prisma.StringWithAggregatesFilter<"DayAvailability"> | string
-  month?: Prisma.IntWithAggregatesFilter<"DayAvailability"> | number
-  day?: Prisma.IntWithAggregatesFilter<"DayAvailability"> | number
+  date?: Prisma.DateTimeWithAggregatesFilter<"DayAvailability"> | Date | string
   tier_id?: Prisma.StringWithAggregatesFilter<"DayAvailability"> | string
 }
 
 export type DayAvailabilityCreateInput = {
-  month: number
-  day: number
+  date: Date | string
   farm: Prisma.farmCreateNestedOneWithoutAvailablitiyInput
   tier: Prisma.TierCreateNestedOneWithoutDaysAvailableInput
 }
 
 export type DayAvailabilityUncheckedCreateInput = {
   farm_id: string
-  month: number
-  day: number
+  date: Date | string
   tier_id: string
 }
 
 export type DayAvailabilityUpdateInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   farm?: Prisma.farmUpdateOneRequiredWithoutAvailablitiyNestedInput
   tier?: Prisma.TierUpdateOneRequiredWithoutDaysAvailableNestedInput
 }
 
 export type DayAvailabilityUncheckedUpdateInput = {
   farm_id?: Prisma.StringFieldUpdateOperationsInput | string
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tier_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type DayAvailabilityCreateManyInput = {
   farm_id: string
-  month: number
-  day: number
+  date: Date | string
   tier_id: string
 }
 
 export type DayAvailabilityUpdateManyMutationInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type DayAvailabilityUncheckedUpdateManyInput = {
   farm_id?: Prisma.StringFieldUpdateOperationsInput | string
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tier_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -317,41 +258,27 @@ export type DayAvailabilityOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type DayAvailabilityFarm_idMonthDayCompoundUniqueInput = {
+export type DayAvailabilityFarm_idDateCompoundUniqueInput = {
   farm_id: string
-  month: number
-  day: number
+  date: Date | string
 }
 
 export type DayAvailabilityCountOrderByAggregateInput = {
   farm_id?: Prisma.SortOrder
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   tier_id?: Prisma.SortOrder
-}
-
-export type DayAvailabilityAvgOrderByAggregateInput = {
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
 }
 
 export type DayAvailabilityMaxOrderByAggregateInput = {
   farm_id?: Prisma.SortOrder
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   tier_id?: Prisma.SortOrder
 }
 
 export type DayAvailabilityMinOrderByAggregateInput = {
   farm_id?: Prisma.SortOrder
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   tier_id?: Prisma.SortOrder
-}
-
-export type DayAvailabilitySumOrderByAggregateInput = {
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
 }
 
 export type DayAvailabilityCreateNestedManyWithoutFarmInput = {
@@ -439,14 +366,12 @@ export type DayAvailabilityUncheckedUpdateManyWithoutTierNestedInput = {
 }
 
 export type DayAvailabilityCreateWithoutFarmInput = {
-  month: number
-  day: number
+  date: Date | string
   tier: Prisma.TierCreateNestedOneWithoutDaysAvailableInput
 }
 
 export type DayAvailabilityUncheckedCreateWithoutFarmInput = {
-  month: number
-  day: number
+  date: Date | string
   tier_id: string
 }
 
@@ -481,21 +406,18 @@ export type DayAvailabilityScalarWhereInput = {
   OR?: Prisma.DayAvailabilityScalarWhereInput[]
   NOT?: Prisma.DayAvailabilityScalarWhereInput | Prisma.DayAvailabilityScalarWhereInput[]
   farm_id?: Prisma.StringFilter<"DayAvailability"> | string
-  month?: Prisma.IntFilter<"DayAvailability"> | number
-  day?: Prisma.IntFilter<"DayAvailability"> | number
+  date?: Prisma.DateTimeFilter<"DayAvailability"> | Date | string
   tier_id?: Prisma.StringFilter<"DayAvailability"> | string
 }
 
 export type DayAvailabilityCreateWithoutTierInput = {
-  month: number
-  day: number
+  date: Date | string
   farm: Prisma.farmCreateNestedOneWithoutAvailablitiyInput
 }
 
 export type DayAvailabilityUncheckedCreateWithoutTierInput = {
   farm_id: string
-  month: number
-  day: number
+  date: Date | string
 }
 
 export type DayAvailabilityCreateOrConnectWithoutTierInput = {
@@ -525,59 +447,50 @@ export type DayAvailabilityUpdateManyWithWhereWithoutTierInput = {
 }
 
 export type DayAvailabilityCreateManyFarmInput = {
-  month: number
-  day: number
+  date: Date | string
   tier_id: string
 }
 
 export type DayAvailabilityUpdateWithoutFarmInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tier?: Prisma.TierUpdateOneRequiredWithoutDaysAvailableNestedInput
 }
 
 export type DayAvailabilityUncheckedUpdateWithoutFarmInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tier_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type DayAvailabilityUncheckedUpdateManyWithoutFarmInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tier_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type DayAvailabilityCreateManyTierInput = {
   farm_id: string
-  month: number
-  day: number
+  date: Date | string
 }
 
 export type DayAvailabilityUpdateWithoutTierInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   farm?: Prisma.farmUpdateOneRequiredWithoutAvailablitiyNestedInput
 }
 
 export type DayAvailabilityUncheckedUpdateWithoutTierInput = {
   farm_id?: Prisma.StringFieldUpdateOperationsInput | string
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type DayAvailabilityUncheckedUpdateManyWithoutTierInput = {
   farm_id?: Prisma.StringFieldUpdateOperationsInput | string
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
 
 export type DayAvailabilitySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   farm_id?: boolean
-  month?: boolean
-  day?: boolean
+  date?: boolean
   tier_id?: boolean
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
   tier?: boolean | Prisma.TierDefaultArgs<ExtArgs>
@@ -585,8 +498,7 @@ export type DayAvailabilitySelect<ExtArgs extends runtime.Types.Extensions.Inter
 
 export type DayAvailabilitySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   farm_id?: boolean
-  month?: boolean
-  day?: boolean
+  date?: boolean
   tier_id?: boolean
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
   tier?: boolean | Prisma.TierDefaultArgs<ExtArgs>
@@ -594,8 +506,7 @@ export type DayAvailabilitySelectCreateManyAndReturn<ExtArgs extends runtime.Typ
 
 export type DayAvailabilitySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   farm_id?: boolean
-  month?: boolean
-  day?: boolean
+  date?: boolean
   tier_id?: boolean
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
   tier?: boolean | Prisma.TierDefaultArgs<ExtArgs>
@@ -603,12 +514,11 @@ export type DayAvailabilitySelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
 
 export type DayAvailabilitySelectScalar = {
   farm_id?: boolean
-  month?: boolean
-  day?: boolean
+  date?: boolean
   tier_id?: boolean
 }
 
-export type DayAvailabilityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"farm_id" | "month" | "day" | "tier_id", ExtArgs["result"]["dayAvailability"]>
+export type DayAvailabilityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"farm_id" | "date" | "tier_id", ExtArgs["result"]["dayAvailability"]>
 export type DayAvailabilityInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
   tier?: boolean | Prisma.TierDefaultArgs<ExtArgs>
@@ -630,8 +540,7 @@ export type $DayAvailabilityPayload<ExtArgs extends runtime.Types.Extensions.Int
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     farm_id: string
-    month: number
-    day: number
+    date: Date
     tier_id: string
   }, ExtArgs["result"]["dayAvailability"]>
   composites: {}
@@ -1059,8 +968,7 @@ export interface Prisma__DayAvailabilityClient<T, Null = never, ExtArgs extends 
  */
 export interface DayAvailabilityFieldRefs {
   readonly farm_id: Prisma.FieldRef<"DayAvailability", 'String'>
-  readonly month: Prisma.FieldRef<"DayAvailability", 'Int'>
-  readonly day: Prisma.FieldRef<"DayAvailability", 'Int'>
+  readonly date: Prisma.FieldRef<"DayAvailability", 'DateTime'>
   readonly tier_id: Prisma.FieldRef<"DayAvailability", 'String'>
 }
     

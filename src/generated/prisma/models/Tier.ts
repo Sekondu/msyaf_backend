@@ -29,11 +29,13 @@ export type AggregateTier = {
 export type TierAvgAggregateOutputType = {
   syp: number | null
   usd: number | null
+  prepay_amount: number | null
 }
 
 export type TierSumAggregateOutputType = {
   syp: number | null
   usd: number | null
+  prepay_amount: number | null
 }
 
 export type TierMinAggregateOutputType = {
@@ -42,6 +44,7 @@ export type TierMinAggregateOutputType = {
   farm_id: string | null
   syp: number | null
   usd: number | null
+  prepay_amount: number | null
   start: string | null
   end: string | null
   created_at: Date | null
@@ -53,6 +56,7 @@ export type TierMaxAggregateOutputType = {
   farm_id: string | null
   syp: number | null
   usd: number | null
+  prepay_amount: number | null
   start: string | null
   end: string | null
   created_at: Date | null
@@ -64,6 +68,7 @@ export type TierCountAggregateOutputType = {
   farm_id: number
   syp: number
   usd: number
+  prepay_amount: number
   start: number
   end: number
   created_at: number
@@ -74,11 +79,13 @@ export type TierCountAggregateOutputType = {
 export type TierAvgAggregateInputType = {
   syp?: true
   usd?: true
+  prepay_amount?: true
 }
 
 export type TierSumAggregateInputType = {
   syp?: true
   usd?: true
+  prepay_amount?: true
 }
 
 export type TierMinAggregateInputType = {
@@ -87,6 +94,7 @@ export type TierMinAggregateInputType = {
   farm_id?: true
   syp?: true
   usd?: true
+  prepay_amount?: true
   start?: true
   end?: true
   created_at?: true
@@ -98,6 +106,7 @@ export type TierMaxAggregateInputType = {
   farm_id?: true
   syp?: true
   usd?: true
+  prepay_amount?: true
   start?: true
   end?: true
   created_at?: true
@@ -109,6 +118,7 @@ export type TierCountAggregateInputType = {
   farm_id?: true
   syp?: true
   usd?: true
+  prepay_amount?: true
   start?: true
   end?: true
   created_at?: true
@@ -207,6 +217,7 @@ export type TierGroupByOutputType = {
   farm_id: string
   syp: number | null
   usd: number | null
+  prepay_amount: number | null
   start: string
   end: string
   created_at: Date
@@ -241,6 +252,7 @@ export type TierWhereInput = {
   farm_id?: Prisma.StringFilter<"Tier"> | string
   syp?: Prisma.IntNullableFilter<"Tier"> | number | null
   usd?: Prisma.IntNullableFilter<"Tier"> | number | null
+  prepay_amount?: Prisma.IntNullableFilter<"Tier"> | number | null
   start?: Prisma.StringFilter<"Tier"> | string
   end?: Prisma.StringFilter<"Tier"> | string
   created_at?: Prisma.DateTimeFilter<"Tier"> | Date | string
@@ -254,6 +266,7 @@ export type TierOrderByWithRelationInput = {
   farm_id?: Prisma.SortOrder
   syp?: Prisma.SortOrderInput | Prisma.SortOrder
   usd?: Prisma.SortOrderInput | Prisma.SortOrder
+  prepay_amount?: Prisma.SortOrderInput | Prisma.SortOrder
   start?: Prisma.SortOrder
   end?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -270,6 +283,7 @@ export type TierWhereUniqueInput = Prisma.AtLeast<{
   farm_id?: Prisma.StringFilter<"Tier"> | string
   syp?: Prisma.IntNullableFilter<"Tier"> | number | null
   usd?: Prisma.IntNullableFilter<"Tier"> | number | null
+  prepay_amount?: Prisma.IntNullableFilter<"Tier"> | number | null
   start?: Prisma.StringFilter<"Tier"> | string
   end?: Prisma.StringFilter<"Tier"> | string
   created_at?: Prisma.DateTimeFilter<"Tier"> | Date | string
@@ -283,6 +297,7 @@ export type TierOrderByWithAggregationInput = {
   farm_id?: Prisma.SortOrder
   syp?: Prisma.SortOrderInput | Prisma.SortOrder
   usd?: Prisma.SortOrderInput | Prisma.SortOrder
+  prepay_amount?: Prisma.SortOrderInput | Prisma.SortOrder
   start?: Prisma.SortOrder
   end?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -302,6 +317,7 @@ export type TierScalarWhereWithAggregatesInput = {
   farm_id?: Prisma.StringWithAggregatesFilter<"Tier"> | string
   syp?: Prisma.IntNullableWithAggregatesFilter<"Tier"> | number | null
   usd?: Prisma.IntNullableWithAggregatesFilter<"Tier"> | number | null
+  prepay_amount?: Prisma.IntNullableWithAggregatesFilter<"Tier"> | number | null
   start?: Prisma.StringWithAggregatesFilter<"Tier"> | string
   end?: Prisma.StringWithAggregatesFilter<"Tier"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Tier"> | Date | string
@@ -312,6 +328,7 @@ export type TierCreateInput = {
   name: string
   syp?: number | null
   usd?: number | null
+  prepay_amount?: number | null
   start: string
   end: string
   created_at?: Date | string
@@ -325,6 +342,7 @@ export type TierUncheckedCreateInput = {
   farm_id: string
   syp?: number | null
   usd?: number | null
+  prepay_amount?: number | null
   start: string
   end: string
   created_at?: Date | string
@@ -336,6 +354,7 @@ export type TierUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   syp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  prepay_amount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   start?: Prisma.StringFieldUpdateOperationsInput | string
   end?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -349,6 +368,7 @@ export type TierUncheckedUpdateInput = {
   farm_id?: Prisma.StringFieldUpdateOperationsInput | string
   syp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  prepay_amount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   start?: Prisma.StringFieldUpdateOperationsInput | string
   end?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -361,6 +381,7 @@ export type TierCreateManyInput = {
   farm_id: string
   syp?: number | null
   usd?: number | null
+  prepay_amount?: number | null
   start: string
   end: string
   created_at?: Date | string
@@ -371,6 +392,7 @@ export type TierUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   syp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  prepay_amount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   start?: Prisma.StringFieldUpdateOperationsInput | string
   end?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -382,6 +404,7 @@ export type TierUncheckedUpdateManyInput = {
   farm_id?: Prisma.StringFieldUpdateOperationsInput | string
   syp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  prepay_amount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   start?: Prisma.StringFieldUpdateOperationsInput | string
   end?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -408,6 +431,7 @@ export type TierCountOrderByAggregateInput = {
   farm_id?: Prisma.SortOrder
   syp?: Prisma.SortOrder
   usd?: Prisma.SortOrder
+  prepay_amount?: Prisma.SortOrder
   start?: Prisma.SortOrder
   end?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -416,6 +440,7 @@ export type TierCountOrderByAggregateInput = {
 export type TierAvgOrderByAggregateInput = {
   syp?: Prisma.SortOrder
   usd?: Prisma.SortOrder
+  prepay_amount?: Prisma.SortOrder
 }
 
 export type TierMaxOrderByAggregateInput = {
@@ -424,6 +449,7 @@ export type TierMaxOrderByAggregateInput = {
   farm_id?: Prisma.SortOrder
   syp?: Prisma.SortOrder
   usd?: Prisma.SortOrder
+  prepay_amount?: Prisma.SortOrder
   start?: Prisma.SortOrder
   end?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -435,6 +461,7 @@ export type TierMinOrderByAggregateInput = {
   farm_id?: Prisma.SortOrder
   syp?: Prisma.SortOrder
   usd?: Prisma.SortOrder
+  prepay_amount?: Prisma.SortOrder
   start?: Prisma.SortOrder
   end?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -443,6 +470,7 @@ export type TierMinOrderByAggregateInput = {
 export type TierSumOrderByAggregateInput = {
   syp?: Prisma.SortOrder
   usd?: Prisma.SortOrder
+  prepay_amount?: Prisma.SortOrder
 }
 
 export type TierCreateNestedManyWithoutFarmInput = {
@@ -501,19 +529,12 @@ export type TierUpdateOneRequiredWithoutDaysAvailableNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.TierUpdateToOneWithWhereWithoutDaysAvailableInput, Prisma.TierUpdateWithoutDaysAvailableInput>, Prisma.TierUncheckedUpdateWithoutDaysAvailableInput>
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type TierCreateWithoutFarmInput = {
   id?: string
   name: string
   syp?: number | null
   usd?: number | null
+  prepay_amount?: number | null
   start: string
   end: string
   created_at?: Date | string
@@ -525,6 +546,7 @@ export type TierUncheckedCreateWithoutFarmInput = {
   name: string
   syp?: number | null
   usd?: number | null
+  prepay_amount?: number | null
   start: string
   end: string
   created_at?: Date | string
@@ -566,6 +588,7 @@ export type TierScalarWhereInput = {
   farm_id?: Prisma.StringFilter<"Tier"> | string
   syp?: Prisma.IntNullableFilter<"Tier"> | number | null
   usd?: Prisma.IntNullableFilter<"Tier"> | number | null
+  prepay_amount?: Prisma.IntNullableFilter<"Tier"> | number | null
   start?: Prisma.StringFilter<"Tier"> | string
   end?: Prisma.StringFilter<"Tier"> | string
   created_at?: Prisma.DateTimeFilter<"Tier"> | Date | string
@@ -576,6 +599,7 @@ export type TierCreateWithoutDaysAvailableInput = {
   name: string
   syp?: number | null
   usd?: number | null
+  prepay_amount?: number | null
   start: string
   end: string
   created_at?: Date | string
@@ -588,6 +612,7 @@ export type TierUncheckedCreateWithoutDaysAvailableInput = {
   farm_id: string
   syp?: number | null
   usd?: number | null
+  prepay_amount?: number | null
   start: string
   end: string
   created_at?: Date | string
@@ -614,6 +639,7 @@ export type TierUpdateWithoutDaysAvailableInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   syp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  prepay_amount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   start?: Prisma.StringFieldUpdateOperationsInput | string
   end?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -626,6 +652,7 @@ export type TierUncheckedUpdateWithoutDaysAvailableInput = {
   farm_id?: Prisma.StringFieldUpdateOperationsInput | string
   syp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  prepay_amount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   start?: Prisma.StringFieldUpdateOperationsInput | string
   end?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -636,6 +663,7 @@ export type TierCreateManyFarmInput = {
   name: string
   syp?: number | null
   usd?: number | null
+  prepay_amount?: number | null
   start: string
   end: string
   created_at?: Date | string
@@ -646,6 +674,7 @@ export type TierUpdateWithoutFarmInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   syp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  prepay_amount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   start?: Prisma.StringFieldUpdateOperationsInput | string
   end?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -657,6 +686,7 @@ export type TierUncheckedUpdateWithoutFarmInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   syp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  prepay_amount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   start?: Prisma.StringFieldUpdateOperationsInput | string
   end?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -668,6 +698,7 @@ export type TierUncheckedUpdateManyWithoutFarmInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   syp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  prepay_amount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   start?: Prisma.StringFieldUpdateOperationsInput | string
   end?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -710,6 +741,7 @@ export type TierSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   farm_id?: boolean
   syp?: boolean
   usd?: boolean
+  prepay_amount?: boolean
   start?: boolean
   end?: boolean
   created_at?: boolean
@@ -724,6 +756,7 @@ export type TierSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   farm_id?: boolean
   syp?: boolean
   usd?: boolean
+  prepay_amount?: boolean
   start?: boolean
   end?: boolean
   created_at?: boolean
@@ -736,6 +769,7 @@ export type TierSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   farm_id?: boolean
   syp?: boolean
   usd?: boolean
+  prepay_amount?: boolean
   start?: boolean
   end?: boolean
   created_at?: boolean
@@ -748,12 +782,13 @@ export type TierSelectScalar = {
   farm_id?: boolean
   syp?: boolean
   usd?: boolean
+  prepay_amount?: boolean
   start?: boolean
   end?: boolean
   created_at?: boolean
 }
 
-export type TierOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "farm_id" | "syp" | "usd" | "start" | "end" | "created_at", ExtArgs["result"]["tier"]>
+export type TierOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "farm_id" | "syp" | "usd" | "prepay_amount" | "start" | "end" | "created_at", ExtArgs["result"]["tier"]>
 export type TierInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   daysAvailable?: boolean | Prisma.Tier$daysAvailableArgs<ExtArgs>
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
@@ -778,6 +813,7 @@ export type $TierPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     farm_id: string
     syp: number | null
     usd: number | null
+    prepay_amount: number | null
     start: string
     end: string
     created_at: Date
@@ -1211,6 +1247,7 @@ export interface TierFieldRefs {
   readonly farm_id: Prisma.FieldRef<"Tier", 'String'>
   readonly syp: Prisma.FieldRef<"Tier", 'Int'>
   readonly usd: Prisma.FieldRef<"Tier", 'Int'>
+  readonly prepay_amount: Prisma.FieldRef<"Tier", 'Int'>
   readonly start: Prisma.FieldRef<"Tier", 'String'>
   readonly end: Prisma.FieldRef<"Tier", 'String'>
   readonly created_at: Prisma.FieldRef<"Tier", 'DateTime'>

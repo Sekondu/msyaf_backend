@@ -16,3 +16,19 @@ export const status_details = {
 } as const
 
 export type status_details = (typeof status_details)[keyof typeof status_details]
+
+
+export const Role = {
+  LISTER: 'LISTER',
+  ADMIN: 'ADMIN'
+} as const
+
+export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const AccountStatus = {
+  ACTIVE: 'ACTIVE',
+  SUSPENDED: 'SUSPENDED'
+} as const
+
+export type AccountStatus = (typeof AccountStatus)[keyof typeof AccountStatus]

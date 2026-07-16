@@ -2,4 +2,8 @@ node_modules
 # Keep environment variables out of version control
 .env
 
-/generated/prisma
+# Build output
+dist
+
+# Prisma client is regenerated on install (postinstall: prisma generate)
+src/generated/prisma

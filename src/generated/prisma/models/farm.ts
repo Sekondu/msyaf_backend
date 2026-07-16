@@ -28,10 +28,12 @@ export type AggregateFarm = {
 
 export type FarmAvgAggregateOutputType = {
   cap: number | null
+  prepay_days_before: number | null
 }
 
 export type FarmSumAggregateOutputType = {
   cap: number | null
+  prepay_days_before: number | null
 }
 
 export type FarmMinAggregateOutputType = {
@@ -42,7 +44,10 @@ export type FarmMinAggregateOutputType = {
   cap: number | null
   tagline: string | null
   desc: string | null
+  prepay_required: boolean | null
+  prepay_days_before: number | null
   created_at: Date | null
+  updated_at: Date | null
 }
 
 export type FarmMaxAggregateOutputType = {
@@ -53,7 +58,10 @@ export type FarmMaxAggregateOutputType = {
   cap: number | null
   tagline: string | null
   desc: string | null
+  prepay_required: boolean | null
+  prepay_days_before: number | null
   created_at: Date | null
+  updated_at: Date | null
 }
 
 export type FarmCountAggregateOutputType = {
@@ -65,17 +73,22 @@ export type FarmCountAggregateOutputType = {
   tagline: number
   amens: number
   desc: number
+  prepay_required: number
+  prepay_days_before: number
   created_at: number
+  updated_at: number
   _all: number
 }
 
 
 export type FarmAvgAggregateInputType = {
   cap?: true
+  prepay_days_before?: true
 }
 
 export type FarmSumAggregateInputType = {
   cap?: true
+  prepay_days_before?: true
 }
 
 export type FarmMinAggregateInputType = {
@@ -86,7 +99,10 @@ export type FarmMinAggregateInputType = {
   cap?: true
   tagline?: true
   desc?: true
+  prepay_required?: true
+  prepay_days_before?: true
   created_at?: true
+  updated_at?: true
 }
 
 export type FarmMaxAggregateInputType = {
@@ -97,7 +113,10 @@ export type FarmMaxAggregateInputType = {
   cap?: true
   tagline?: true
   desc?: true
+  prepay_required?: true
+  prepay_days_before?: true
   created_at?: true
+  updated_at?: true
 }
 
 export type FarmCountAggregateInputType = {
@@ -109,7 +128,10 @@ export type FarmCountAggregateInputType = {
   tagline?: true
   amens?: true
   desc?: true
+  prepay_required?: true
+  prepay_days_before?: true
   created_at?: true
+  updated_at?: true
   _all?: true
 }
 
@@ -208,7 +230,10 @@ export type FarmGroupByOutputType = {
   tagline: string
   amens: string[]
   desc: string
+  prepay_required: boolean
+  prepay_days_before: number | null
   created_at: Date
+  updated_at: Date
   _count: FarmCountAggregateOutputType | null
   _avg: FarmAvgAggregateOutputType | null
   _sum: FarmSumAggregateOutputType | null
@@ -243,7 +268,10 @@ export type farmWhereInput = {
   tagline?: Prisma.StringFilter<"farm"> | string
   amens?: Prisma.StringNullableListFilter<"farm">
   desc?: Prisma.StringFilter<"farm"> | string
+  prepay_required?: Prisma.BoolFilter<"farm"> | boolean
+  prepay_days_before?: Prisma.IntNullableFilter<"farm"> | number | null
   created_at?: Prisma.DateTimeFilter<"farm"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"farm"> | Date | string
   media?: Prisma.MediaListRelationFilter
   tiers?: Prisma.TierListRelationFilter
   Bookings?: Prisma.BookingRequestListRelationFilter
@@ -261,7 +289,10 @@ export type farmOrderByWithRelationInput = {
   tagline?: Prisma.SortOrder
   amens?: Prisma.SortOrder
   desc?: Prisma.SortOrder
+  prepay_required?: Prisma.SortOrder
+  prepay_days_before?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
   media?: Prisma.MediaOrderByRelationAggregateInput
   tiers?: Prisma.TierOrderByRelationAggregateInput
   Bookings?: Prisma.BookingRequestOrderByRelationAggregateInput
@@ -282,7 +313,10 @@ export type farmWhereUniqueInput = Prisma.AtLeast<{
   tagline?: Prisma.StringFilter<"farm"> | string
   amens?: Prisma.StringNullableListFilter<"farm">
   desc?: Prisma.StringFilter<"farm"> | string
+  prepay_required?: Prisma.BoolFilter<"farm"> | boolean
+  prepay_days_before?: Prisma.IntNullableFilter<"farm"> | number | null
   created_at?: Prisma.DateTimeFilter<"farm"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"farm"> | Date | string
   media?: Prisma.MediaListRelationFilter
   tiers?: Prisma.TierListRelationFilter
   Bookings?: Prisma.BookingRequestListRelationFilter
@@ -300,7 +334,10 @@ export type farmOrderByWithAggregationInput = {
   tagline?: Prisma.SortOrder
   amens?: Prisma.SortOrder
   desc?: Prisma.SortOrder
+  prepay_required?: Prisma.SortOrder
+  prepay_days_before?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
   _count?: Prisma.farmCountOrderByAggregateInput
   _avg?: Prisma.farmAvgOrderByAggregateInput
   _max?: Prisma.farmMaxOrderByAggregateInput
@@ -320,7 +357,10 @@ export type farmScalarWhereWithAggregatesInput = {
   tagline?: Prisma.StringWithAggregatesFilter<"farm"> | string
   amens?: Prisma.StringNullableListFilter<"farm">
   desc?: Prisma.StringWithAggregatesFilter<"farm"> | string
+  prepay_required?: Prisma.BoolWithAggregatesFilter<"farm"> | boolean
+  prepay_days_before?: Prisma.IntNullableWithAggregatesFilter<"farm"> | number | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"farm"> | Date | string
+  updated_at?: Prisma.DateTimeWithAggregatesFilter<"farm"> | Date | string
 }
 
 export type farmCreateInput = {
@@ -331,7 +371,10 @@ export type farmCreateInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaCreateNestedManyWithoutFarmInput
   tiers?: Prisma.TierCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestCreateNestedManyWithoutFarmInput
@@ -349,7 +392,10 @@ export type farmUncheckedCreateInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutFarmInput
   tiers?: Prisma.TierUncheckedCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestUncheckedCreateNestedManyWithoutFarmInput
@@ -365,7 +411,10 @@ export type farmUpdateInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUpdateManyWithoutFarmNestedInput
   tiers?: Prisma.TierUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUpdateManyWithoutFarmNestedInput
@@ -383,7 +432,10 @@ export type farmUncheckedUpdateInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUncheckedUpdateManyWithoutFarmNestedInput
   tiers?: Prisma.TierUncheckedUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUncheckedUpdateManyWithoutFarmNestedInput
@@ -400,7 +452,10 @@ export type farmCreateManyInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
 }
 
 export type farmUpdateManyMutationInput = {
@@ -411,7 +466,10 @@ export type farmUpdateManyMutationInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type farmUncheckedUpdateManyInput = {
@@ -423,7 +481,10 @@ export type farmUncheckedUpdateManyInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type FarmListRelationFilter = {
@@ -453,11 +514,15 @@ export type farmCountOrderByAggregateInput = {
   tagline?: Prisma.SortOrder
   amens?: Prisma.SortOrder
   desc?: Prisma.SortOrder
+  prepay_required?: Prisma.SortOrder
+  prepay_days_before?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type farmAvgOrderByAggregateInput = {
   cap?: Prisma.SortOrder
+  prepay_days_before?: Prisma.SortOrder
 }
 
 export type farmMaxOrderByAggregateInput = {
@@ -468,7 +533,10 @@ export type farmMaxOrderByAggregateInput = {
   cap?: Prisma.SortOrder
   tagline?: Prisma.SortOrder
   desc?: Prisma.SortOrder
+  prepay_required?: Prisma.SortOrder
+  prepay_days_before?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type farmMinOrderByAggregateInput = {
@@ -479,11 +547,15 @@ export type farmMinOrderByAggregateInput = {
   cap?: Prisma.SortOrder
   tagline?: Prisma.SortOrder
   desc?: Prisma.SortOrder
+  prepay_required?: Prisma.SortOrder
+  prepay_days_before?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type farmSumOrderByAggregateInput = {
   cap?: Prisma.SortOrder
+  prepay_days_before?: Prisma.SortOrder
 }
 
 export type FarmScalarRelationFilter = {
@@ -537,9 +609,29 @@ export type farmCreateamensInput = {
   set: string[]
 }
 
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type farmUpdateamensInput = {
   set?: string[]
   push?: string | string[]
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type farmCreateNestedOneWithoutAvailablitiyInput = {
@@ -620,7 +712,10 @@ export type farmCreateWithoutOwnerInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaCreateNestedManyWithoutFarmInput
   tiers?: Prisma.TierCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestCreateNestedManyWithoutFarmInput
@@ -636,7 +731,10 @@ export type farmUncheckedCreateWithoutOwnerInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutFarmInput
   tiers?: Prisma.TierUncheckedCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestUncheckedCreateNestedManyWithoutFarmInput
@@ -682,7 +780,10 @@ export type farmScalarWhereInput = {
   tagline?: Prisma.StringFilter<"farm"> | string
   amens?: Prisma.StringNullableListFilter<"farm">
   desc?: Prisma.StringFilter<"farm"> | string
+  prepay_required?: Prisma.BoolFilter<"farm"> | boolean
+  prepay_days_before?: Prisma.IntNullableFilter<"farm"> | number | null
   created_at?: Prisma.DateTimeFilter<"farm"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"farm"> | Date | string
 }
 
 export type farmCreateWithoutAvailablitiyInput = {
@@ -693,7 +794,10 @@ export type farmCreateWithoutAvailablitiyInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaCreateNestedManyWithoutFarmInput
   tiers?: Prisma.TierCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestCreateNestedManyWithoutFarmInput
@@ -710,7 +814,10 @@ export type farmUncheckedCreateWithoutAvailablitiyInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutFarmInput
   tiers?: Prisma.TierUncheckedCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestUncheckedCreateNestedManyWithoutFarmInput
@@ -741,7 +848,10 @@ export type farmUpdateWithoutAvailablitiyInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUpdateManyWithoutFarmNestedInput
   tiers?: Prisma.TierUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUpdateManyWithoutFarmNestedInput
@@ -758,7 +868,10 @@ export type farmUncheckedUpdateWithoutAvailablitiyInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUncheckedUpdateManyWithoutFarmNestedInput
   tiers?: Prisma.TierUncheckedUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUncheckedUpdateManyWithoutFarmNestedInput
@@ -773,7 +886,10 @@ export type farmCreateWithoutBusyInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaCreateNestedManyWithoutFarmInput
   tiers?: Prisma.TierCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestCreateNestedManyWithoutFarmInput
@@ -790,7 +906,10 @@ export type farmUncheckedCreateWithoutBusyInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutFarmInput
   tiers?: Prisma.TierUncheckedCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestUncheckedCreateNestedManyWithoutFarmInput
@@ -821,7 +940,10 @@ export type farmUpdateWithoutBusyInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUpdateManyWithoutFarmNestedInput
   tiers?: Prisma.TierUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUpdateManyWithoutFarmNestedInput
@@ -838,7 +960,10 @@ export type farmUncheckedUpdateWithoutBusyInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUncheckedUpdateManyWithoutFarmNestedInput
   tiers?: Prisma.TierUncheckedUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUncheckedUpdateManyWithoutFarmNestedInput
@@ -853,7 +978,10 @@ export type farmCreateWithoutMediaInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   tiers?: Prisma.TierCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestCreateNestedManyWithoutFarmInput
   availablitiy?: Prisma.DayAvailabilityCreateNestedManyWithoutFarmInput
@@ -870,7 +998,10 @@ export type farmUncheckedCreateWithoutMediaInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   tiers?: Prisma.TierUncheckedCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestUncheckedCreateNestedManyWithoutFarmInput
   availablitiy?: Prisma.DayAvailabilityUncheckedCreateNestedManyWithoutFarmInput
@@ -901,7 +1032,10 @@ export type farmUpdateWithoutMediaInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tiers?: Prisma.TierUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUpdateManyWithoutFarmNestedInput
   availablitiy?: Prisma.DayAvailabilityUpdateManyWithoutFarmNestedInput
@@ -918,7 +1052,10 @@ export type farmUncheckedUpdateWithoutMediaInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tiers?: Prisma.TierUncheckedUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUncheckedUpdateManyWithoutFarmNestedInput
   availablitiy?: Prisma.DayAvailabilityUncheckedUpdateManyWithoutFarmNestedInput
@@ -933,7 +1070,10 @@ export type farmCreateWithoutTiersInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestCreateNestedManyWithoutFarmInput
   availablitiy?: Prisma.DayAvailabilityCreateNestedManyWithoutFarmInput
@@ -950,7 +1090,10 @@ export type farmUncheckedCreateWithoutTiersInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutFarmInput
   Bookings?: Prisma.BookingRequestUncheckedCreateNestedManyWithoutFarmInput
   availablitiy?: Prisma.DayAvailabilityUncheckedCreateNestedManyWithoutFarmInput
@@ -981,7 +1124,10 @@ export type farmUpdateWithoutTiersInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUpdateManyWithoutFarmNestedInput
   availablitiy?: Prisma.DayAvailabilityUpdateManyWithoutFarmNestedInput
@@ -998,7 +1144,10 @@ export type farmUncheckedUpdateWithoutTiersInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUncheckedUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUncheckedUpdateManyWithoutFarmNestedInput
   availablitiy?: Prisma.DayAvailabilityUncheckedUpdateManyWithoutFarmNestedInput
@@ -1013,7 +1162,10 @@ export type farmCreateWithoutBookingsInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaCreateNestedManyWithoutFarmInput
   tiers?: Prisma.TierCreateNestedManyWithoutFarmInput
   availablitiy?: Prisma.DayAvailabilityCreateNestedManyWithoutFarmInput
@@ -1030,7 +1182,10 @@ export type farmUncheckedCreateWithoutBookingsInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutFarmInput
   tiers?: Prisma.TierUncheckedCreateNestedManyWithoutFarmInput
   availablitiy?: Prisma.DayAvailabilityUncheckedCreateNestedManyWithoutFarmInput
@@ -1061,7 +1216,10 @@ export type farmUpdateWithoutBookingsInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUpdateManyWithoutFarmNestedInput
   tiers?: Prisma.TierUpdateManyWithoutFarmNestedInput
   availablitiy?: Prisma.DayAvailabilityUpdateManyWithoutFarmNestedInput
@@ -1078,7 +1236,10 @@ export type farmUncheckedUpdateWithoutBookingsInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUncheckedUpdateManyWithoutFarmNestedInput
   tiers?: Prisma.TierUncheckedUpdateManyWithoutFarmNestedInput
   availablitiy?: Prisma.DayAvailabilityUncheckedUpdateManyWithoutFarmNestedInput
@@ -1093,7 +1254,10 @@ export type farmCreateManyOwnerInput = {
   tagline: string
   amens?: Prisma.farmCreateamensInput | string[]
   desc: string
+  prepay_required?: boolean
+  prepay_days_before?: number | null
   created_at?: Date | string
+  updated_at?: Date | string
 }
 
 export type farmUpdateWithoutOwnerInput = {
@@ -1104,7 +1268,10 @@ export type farmUpdateWithoutOwnerInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUpdateManyWithoutFarmNestedInput
   tiers?: Prisma.TierUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUpdateManyWithoutFarmNestedInput
@@ -1120,7 +1287,10 @@ export type farmUncheckedUpdateWithoutOwnerInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.MediaUncheckedUpdateManyWithoutFarmNestedInput
   tiers?: Prisma.TierUncheckedUpdateManyWithoutFarmNestedInput
   Bookings?: Prisma.BookingRequestUncheckedUpdateManyWithoutFarmNestedInput
@@ -1136,7 +1306,10 @@ export type farmUncheckedUpdateManyWithoutOwnerInput = {
   tagline?: Prisma.StringFieldUpdateOperationsInput | string
   amens?: Prisma.farmUpdateamensInput | string[]
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  prepay_required?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  prepay_days_before?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -1215,7 +1388,10 @@ export type farmSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   tagline?: boolean
   amens?: boolean
   desc?: boolean
+  prepay_required?: boolean
+  prepay_days_before?: boolean
   created_at?: boolean
+  updated_at?: boolean
   media?: boolean | Prisma.farm$mediaArgs<ExtArgs>
   tiers?: boolean | Prisma.farm$tiersArgs<ExtArgs>
   Bookings?: boolean | Prisma.farm$BookingsArgs<ExtArgs>
@@ -1234,7 +1410,10 @@ export type farmSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   tagline?: boolean
   amens?: boolean
   desc?: boolean
+  prepay_required?: boolean
+  prepay_days_before?: boolean
   created_at?: boolean
+  updated_at?: boolean
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["farm"]>
 
@@ -1247,7 +1426,10 @@ export type farmSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   tagline?: boolean
   amens?: boolean
   desc?: boolean
+  prepay_required?: boolean
+  prepay_days_before?: boolean
   created_at?: boolean
+  updated_at?: boolean
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["farm"]>
 
@@ -1260,10 +1442,13 @@ export type farmSelectScalar = {
   tagline?: boolean
   amens?: boolean
   desc?: boolean
+  prepay_required?: boolean
+  prepay_days_before?: boolean
   created_at?: boolean
+  updated_at?: boolean
 }
 
-export type farmOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "city" | "owner_id" | "cap" | "tagline" | "amens" | "desc" | "created_at", ExtArgs["result"]["farm"]>
+export type farmOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "city" | "owner_id" | "cap" | "tagline" | "amens" | "desc" | "prepay_required" | "prepay_days_before" | "created_at" | "updated_at", ExtArgs["result"]["farm"]>
 export type farmInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   media?: boolean | Prisma.farm$mediaArgs<ExtArgs>
   tiers?: boolean | Prisma.farm$tiersArgs<ExtArgs>
@@ -1299,7 +1484,10 @@ export type $farmPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     tagline: string
     amens: string[]
     desc: string
+    prepay_required: boolean
+    prepay_days_before: number | null
     created_at: Date
+    updated_at: Date
   }, ExtArgs["result"]["farm"]>
   composites: {}
 }
@@ -1737,7 +1925,10 @@ export interface farmFieldRefs {
   readonly tagline: Prisma.FieldRef<"farm", 'String'>
   readonly amens: Prisma.FieldRef<"farm", 'String[]'>
   readonly desc: Prisma.FieldRef<"farm", 'String'>
+  readonly prepay_required: Prisma.FieldRef<"farm", 'Boolean'>
+  readonly prepay_days_before: Prisma.FieldRef<"farm", 'Int'>
   readonly created_at: Prisma.FieldRef<"farm", 'DateTime'>
+  readonly updated_at: Prisma.FieldRef<"farm", 'DateTime'>
 }
     
 

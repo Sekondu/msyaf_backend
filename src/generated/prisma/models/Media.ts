@@ -28,10 +28,12 @@ export type AggregateMedia = {
 
 export type MediaAvgAggregateOutputType = {
   size: number | null
+  sort_order: number | null
 }
 
 export type MediaSumAggregateOutputType = {
   size: number | null
+  sort_order: number | null
 }
 
 export type MediaMinAggregateOutputType = {
@@ -41,6 +43,7 @@ export type MediaMinAggregateOutputType = {
   name: string | null
   mime: string | null
   size: number | null
+  sort_order: number | null
   add_date: Date | null
 }
 
@@ -51,6 +54,7 @@ export type MediaMaxAggregateOutputType = {
   name: string | null
   mime: string | null
   size: number | null
+  sort_order: number | null
   add_date: Date | null
 }
 
@@ -61,6 +65,7 @@ export type MediaCountAggregateOutputType = {
   name: number
   mime: number
   size: number
+  sort_order: number
   add_date: number
   _all: number
 }
@@ -68,10 +73,12 @@ export type MediaCountAggregateOutputType = {
 
 export type MediaAvgAggregateInputType = {
   size?: true
+  sort_order?: true
 }
 
 export type MediaSumAggregateInputType = {
   size?: true
+  sort_order?: true
 }
 
 export type MediaMinAggregateInputType = {
@@ -81,6 +88,7 @@ export type MediaMinAggregateInputType = {
   name?: true
   mime?: true
   size?: true
+  sort_order?: true
   add_date?: true
 }
 
@@ -91,6 +99,7 @@ export type MediaMaxAggregateInputType = {
   name?: true
   mime?: true
   size?: true
+  sort_order?: true
   add_date?: true
 }
 
@@ -101,6 +110,7 @@ export type MediaCountAggregateInputType = {
   name?: true
   mime?: true
   size?: true
+  sort_order?: true
   add_date?: true
   _all?: true
 }
@@ -198,6 +208,7 @@ export type MediaGroupByOutputType = {
   name: string
   mime: string
   size: number
+  sort_order: number
   add_date: Date
   _count: MediaCountAggregateOutputType | null
   _avg: MediaAvgAggregateOutputType | null
@@ -231,6 +242,7 @@ export type MediaWhereInput = {
   name?: Prisma.StringFilter<"Media"> | string
   mime?: Prisma.StringFilter<"Media"> | string
   size?: Prisma.IntFilter<"Media"> | number
+  sort_order?: Prisma.IntFilter<"Media"> | number
   add_date?: Prisma.DateTimeFilter<"Media"> | Date | string
   farm?: Prisma.XOR<Prisma.FarmScalarRelationFilter, Prisma.farmWhereInput>
 }
@@ -242,6 +254,7 @@ export type MediaOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   mime?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  sort_order?: Prisma.SortOrder
   add_date?: Prisma.SortOrder
   farm?: Prisma.farmOrderByWithRelationInput
 }
@@ -256,6 +269,7 @@ export type MediaWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Media"> | string
   mime?: Prisma.StringFilter<"Media"> | string
   size?: Prisma.IntFilter<"Media"> | number
+  sort_order?: Prisma.IntFilter<"Media"> | number
   add_date?: Prisma.DateTimeFilter<"Media"> | Date | string
   farm?: Prisma.XOR<Prisma.FarmScalarRelationFilter, Prisma.farmWhereInput>
 }, "id">
@@ -267,6 +281,7 @@ export type MediaOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   mime?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  sort_order?: Prisma.SortOrder
   add_date?: Prisma.SortOrder
   _count?: Prisma.MediaCountOrderByAggregateInput
   _avg?: Prisma.MediaAvgOrderByAggregateInput
@@ -285,6 +300,7 @@ export type MediaScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Media"> | string
   mime?: Prisma.StringWithAggregatesFilter<"Media"> | string
   size?: Prisma.IntWithAggregatesFilter<"Media"> | number
+  sort_order?: Prisma.IntWithAggregatesFilter<"Media"> | number
   add_date?: Prisma.DateTimeWithAggregatesFilter<"Media"> | Date | string
 }
 
@@ -294,6 +310,7 @@ export type MediaCreateInput = {
   name: string
   mime: string
   size: number
+  sort_order?: number
   add_date?: Date | string
   farm: Prisma.farmCreateNestedOneWithoutMediaInput
 }
@@ -305,6 +322,7 @@ export type MediaUncheckedCreateInput = {
   name: string
   mime: string
   size: number
+  sort_order?: number
   add_date?: Date | string
 }
 
@@ -314,6 +332,7 @@ export type MediaUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   mime?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  sort_order?: Prisma.IntFieldUpdateOperationsInput | number
   add_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   farm?: Prisma.farmUpdateOneRequiredWithoutMediaNestedInput
 }
@@ -325,6 +344,7 @@ export type MediaUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   mime?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  sort_order?: Prisma.IntFieldUpdateOperationsInput | number
   add_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -335,6 +355,7 @@ export type MediaCreateManyInput = {
   name: string
   mime: string
   size: number
+  sort_order?: number
   add_date?: Date | string
 }
 
@@ -344,6 +365,7 @@ export type MediaUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   mime?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  sort_order?: Prisma.IntFieldUpdateOperationsInput | number
   add_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -354,6 +376,7 @@ export type MediaUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   mime?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  sort_order?: Prisma.IntFieldUpdateOperationsInput | number
   add_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -374,11 +397,13 @@ export type MediaCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   mime?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  sort_order?: Prisma.SortOrder
   add_date?: Prisma.SortOrder
 }
 
 export type MediaAvgOrderByAggregateInput = {
   size?: Prisma.SortOrder
+  sort_order?: Prisma.SortOrder
 }
 
 export type MediaMaxOrderByAggregateInput = {
@@ -388,6 +413,7 @@ export type MediaMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   mime?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  sort_order?: Prisma.SortOrder
   add_date?: Prisma.SortOrder
 }
 
@@ -398,11 +424,13 @@ export type MediaMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   mime?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  sort_order?: Prisma.SortOrder
   add_date?: Prisma.SortOrder
 }
 
 export type MediaSumOrderByAggregateInput = {
   size?: Prisma.SortOrder
+  sort_order?: Prisma.SortOrder
 }
 
 export type MediaCreateNestedManyWithoutFarmInput = {
@@ -453,6 +481,7 @@ export type MediaCreateWithoutFarmInput = {
   name: string
   mime: string
   size: number
+  sort_order?: number
   add_date?: Date | string
 }
 
@@ -462,6 +491,7 @@ export type MediaUncheckedCreateWithoutFarmInput = {
   name: string
   mime: string
   size: number
+  sort_order?: number
   add_date?: Date | string
 }
 
@@ -501,6 +531,7 @@ export type MediaScalarWhereInput = {
   name?: Prisma.StringFilter<"Media"> | string
   mime?: Prisma.StringFilter<"Media"> | string
   size?: Prisma.IntFilter<"Media"> | number
+  sort_order?: Prisma.IntFilter<"Media"> | number
   add_date?: Prisma.DateTimeFilter<"Media"> | Date | string
 }
 
@@ -510,6 +541,7 @@ export type MediaCreateManyFarmInput = {
   name: string
   mime: string
   size: number
+  sort_order?: number
   add_date?: Date | string
 }
 
@@ -519,6 +551,7 @@ export type MediaUpdateWithoutFarmInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   mime?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  sort_order?: Prisma.IntFieldUpdateOperationsInput | number
   add_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -528,6 +561,7 @@ export type MediaUncheckedUpdateWithoutFarmInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   mime?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  sort_order?: Prisma.IntFieldUpdateOperationsInput | number
   add_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -537,6 +571,7 @@ export type MediaUncheckedUpdateManyWithoutFarmInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   mime?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  sort_order?: Prisma.IntFieldUpdateOperationsInput | number
   add_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -549,6 +584,7 @@ export type MediaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   name?: boolean
   mime?: boolean
   size?: boolean
+  sort_order?: boolean
   add_date?: boolean
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["media"]>
@@ -560,6 +596,7 @@ export type MediaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   name?: boolean
   mime?: boolean
   size?: boolean
+  sort_order?: boolean
   add_date?: boolean
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["media"]>
@@ -571,6 +608,7 @@ export type MediaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   name?: boolean
   mime?: boolean
   size?: boolean
+  sort_order?: boolean
   add_date?: boolean
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["media"]>
@@ -582,10 +620,11 @@ export type MediaSelectScalar = {
   name?: boolean
   mime?: boolean
   size?: boolean
+  sort_order?: boolean
   add_date?: boolean
 }
 
-export type MediaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "url" | "farm_id" | "name" | "mime" | "size" | "add_date", ExtArgs["result"]["media"]>
+export type MediaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "url" | "farm_id" | "name" | "mime" | "size" | "sort_order" | "add_date", ExtArgs["result"]["media"]>
 export type MediaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
 }
@@ -608,6 +647,7 @@ export type $MediaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     name: string
     mime: string
     size: number
+    sort_order: number
     add_date: Date
   }, ExtArgs["result"]["media"]>
   composites: {}
@@ -1039,6 +1079,7 @@ export interface MediaFieldRefs {
   readonly name: Prisma.FieldRef<"Media", 'String'>
   readonly mime: Prisma.FieldRef<"Media", 'String'>
   readonly size: Prisma.FieldRef<"Media", 'Int'>
+  readonly sort_order: Prisma.FieldRef<"Media", 'Int'>
   readonly add_date: Prisma.FieldRef<"Media", 'DateTime'>
 }
     

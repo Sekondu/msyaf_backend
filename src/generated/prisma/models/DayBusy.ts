@@ -20,73 +20,45 @@ export type DayBusyModel = runtime.Types.Result.DefaultSelection<Prisma.$DayBusy
 
 export type AggregateDayBusy = {
   _count: DayBusyCountAggregateOutputType | null
-  _avg: DayBusyAvgAggregateOutputType | null
-  _sum: DayBusySumAggregateOutputType | null
   _min: DayBusyMinAggregateOutputType | null
   _max: DayBusyMaxAggregateOutputType | null
 }
 
-export type DayBusyAvgAggregateOutputType = {
-  month: number | null
-  day: number | null
-}
-
-export type DayBusySumAggregateOutputType = {
-  month: number | null
-  day: number | null
-}
-
 export type DayBusyMinAggregateOutputType = {
   farm_id: string | null
-  month: number | null
-  day: number | null
+  date: Date | null
   tier_id: string | null
 }
 
 export type DayBusyMaxAggregateOutputType = {
   farm_id: string | null
-  month: number | null
-  day: number | null
+  date: Date | null
   tier_id: string | null
 }
 
 export type DayBusyCountAggregateOutputType = {
   farm_id: number
-  month: number
-  day: number
+  date: number
   tier_id: number
   _all: number
 }
 
 
-export type DayBusyAvgAggregateInputType = {
-  month?: true
-  day?: true
-}
-
-export type DayBusySumAggregateInputType = {
-  month?: true
-  day?: true
-}
-
 export type DayBusyMinAggregateInputType = {
   farm_id?: true
-  month?: true
-  day?: true
+  date?: true
   tier_id?: true
 }
 
 export type DayBusyMaxAggregateInputType = {
   farm_id?: true
-  month?: true
-  day?: true
+  date?: true
   tier_id?: true
 }
 
 export type DayBusyCountAggregateInputType = {
   farm_id?: true
-  month?: true
-  day?: true
+  date?: true
   tier_id?: true
   _all?: true
 }
@@ -129,18 +101,6 @@ export type DayBusyAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: DayBusyAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: DayBusySumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: DayBusyMinAggregateInputType
@@ -171,20 +131,15 @@ export type DayBusyGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: DayBusyCountAggregateInputType | true
-  _avg?: DayBusyAvgAggregateInputType
-  _sum?: DayBusySumAggregateInputType
   _min?: DayBusyMinAggregateInputType
   _max?: DayBusyMaxAggregateInputType
 }
 
 export type DayBusyGroupByOutputType = {
   farm_id: string
-  month: number
-  day: number
-  tier_id: string
+  date: Date
+  tier_id: string | null
   _count: DayBusyCountAggregateOutputType | null
-  _avg: DayBusyAvgAggregateOutputType | null
-  _sum: DayBusySumAggregateOutputType | null
   _min: DayBusyMinAggregateOutputType | null
   _max: DayBusyMaxAggregateOutputType | null
 }
@@ -209,42 +164,36 @@ export type DayBusyWhereInput = {
   OR?: Prisma.DayBusyWhereInput[]
   NOT?: Prisma.DayBusyWhereInput | Prisma.DayBusyWhereInput[]
   farm_id?: Prisma.StringFilter<"DayBusy"> | string
-  month?: Prisma.IntFilter<"DayBusy"> | number
-  day?: Prisma.IntFilter<"DayBusy"> | number
-  tier_id?: Prisma.StringFilter<"DayBusy"> | string
+  date?: Prisma.DateTimeFilter<"DayBusy"> | Date | string
+  tier_id?: Prisma.StringNullableFilter<"DayBusy"> | string | null
   farm?: Prisma.XOR<Prisma.FarmScalarRelationFilter, Prisma.farmWhereInput>
 }
 
 export type DayBusyOrderByWithRelationInput = {
   farm_id?: Prisma.SortOrder
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
-  tier_id?: Prisma.SortOrder
+  date?: Prisma.SortOrder
+  tier_id?: Prisma.SortOrderInput | Prisma.SortOrder
   farm?: Prisma.farmOrderByWithRelationInput
 }
 
 export type DayBusyWhereUniqueInput = Prisma.AtLeast<{
-  farm_id_month_day?: Prisma.DayBusyFarm_idMonthDayCompoundUniqueInput
+  farm_id_date?: Prisma.DayBusyFarm_idDateCompoundUniqueInput
   AND?: Prisma.DayBusyWhereInput | Prisma.DayBusyWhereInput[]
   OR?: Prisma.DayBusyWhereInput[]
   NOT?: Prisma.DayBusyWhereInput | Prisma.DayBusyWhereInput[]
   farm_id?: Prisma.StringFilter<"DayBusy"> | string
-  month?: Prisma.IntFilter<"DayBusy"> | number
-  day?: Prisma.IntFilter<"DayBusy"> | number
-  tier_id?: Prisma.StringFilter<"DayBusy"> | string
+  date?: Prisma.DateTimeFilter<"DayBusy"> | Date | string
+  tier_id?: Prisma.StringNullableFilter<"DayBusy"> | string | null
   farm?: Prisma.XOR<Prisma.FarmScalarRelationFilter, Prisma.farmWhereInput>
-}, "farm_id_month_day">
+}, "farm_id_date">
 
 export type DayBusyOrderByWithAggregationInput = {
   farm_id?: Prisma.SortOrder
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
-  tier_id?: Prisma.SortOrder
+  date?: Prisma.SortOrder
+  tier_id?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.DayBusyCountOrderByAggregateInput
-  _avg?: Prisma.DayBusyAvgOrderByAggregateInput
   _max?: Prisma.DayBusyMaxOrderByAggregateInput
   _min?: Prisma.DayBusyMinOrderByAggregateInput
-  _sum?: Prisma.DayBusySumOrderByAggregateInput
 }
 
 export type DayBusyScalarWhereWithAggregatesInput = {
@@ -252,57 +201,49 @@ export type DayBusyScalarWhereWithAggregatesInput = {
   OR?: Prisma.DayBusyScalarWhereWithAggregatesInput[]
   NOT?: Prisma.DayBusyScalarWhereWithAggregatesInput | Prisma.DayBusyScalarWhereWithAggregatesInput[]
   farm_id?: Prisma.StringWithAggregatesFilter<"DayBusy"> | string
-  month?: Prisma.IntWithAggregatesFilter<"DayBusy"> | number
-  day?: Prisma.IntWithAggregatesFilter<"DayBusy"> | number
-  tier_id?: Prisma.StringWithAggregatesFilter<"DayBusy"> | string
+  date?: Prisma.DateTimeWithAggregatesFilter<"DayBusy"> | Date | string
+  tier_id?: Prisma.StringNullableWithAggregatesFilter<"DayBusy"> | string | null
 }
 
 export type DayBusyCreateInput = {
-  month: number
-  day: number
-  tier_id: string
+  date: Date | string
+  tier_id?: string | null
   farm: Prisma.farmCreateNestedOneWithoutBusyInput
 }
 
 export type DayBusyUncheckedCreateInput = {
   farm_id: string
-  month: number
-  day: number
-  tier_id: string
+  date: Date | string
+  tier_id?: string | null
 }
 
 export type DayBusyUpdateInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
-  tier_id?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tier_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   farm?: Prisma.farmUpdateOneRequiredWithoutBusyNestedInput
 }
 
 export type DayBusyUncheckedUpdateInput = {
   farm_id?: Prisma.StringFieldUpdateOperationsInput | string
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
-  tier_id?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tier_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DayBusyCreateManyInput = {
   farm_id: string
-  month: number
-  day: number
-  tier_id: string
+  date: Date | string
+  tier_id?: string | null
 }
 
 export type DayBusyUpdateManyMutationInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
-  tier_id?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tier_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DayBusyUncheckedUpdateManyInput = {
   farm_id?: Prisma.StringFieldUpdateOperationsInput | string
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
-  tier_id?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tier_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DayBusyListRelationFilter = {
@@ -315,41 +256,27 @@ export type DayBusyOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type DayBusyFarm_idMonthDayCompoundUniqueInput = {
+export type DayBusyFarm_idDateCompoundUniqueInput = {
   farm_id: string
-  month: number
-  day: number
+  date: Date | string
 }
 
 export type DayBusyCountOrderByAggregateInput = {
   farm_id?: Prisma.SortOrder
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   tier_id?: Prisma.SortOrder
-}
-
-export type DayBusyAvgOrderByAggregateInput = {
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
 }
 
 export type DayBusyMaxOrderByAggregateInput = {
   farm_id?: Prisma.SortOrder
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   tier_id?: Prisma.SortOrder
 }
 
 export type DayBusyMinOrderByAggregateInput = {
   farm_id?: Prisma.SortOrder
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   tier_id?: Prisma.SortOrder
-}
-
-export type DayBusySumOrderByAggregateInput = {
-  month?: Prisma.SortOrder
-  day?: Prisma.SortOrder
 }
 
 export type DayBusyCreateNestedManyWithoutFarmInput = {
@@ -394,16 +321,18 @@ export type DayBusyUncheckedUpdateManyWithoutFarmNestedInput = {
   deleteMany?: Prisma.DayBusyScalarWhereInput | Prisma.DayBusyScalarWhereInput[]
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
 export type DayBusyCreateWithoutFarmInput = {
-  month: number
-  day: number
-  tier_id: string
+  date: Date | string
+  tier_id?: string | null
 }
 
 export type DayBusyUncheckedCreateWithoutFarmInput = {
-  month: number
-  day: number
-  tier_id: string
+  date: Date | string
+  tier_id?: string | null
 }
 
 export type DayBusyCreateOrConnectWithoutFarmInput = {
@@ -437,69 +366,60 @@ export type DayBusyScalarWhereInput = {
   OR?: Prisma.DayBusyScalarWhereInput[]
   NOT?: Prisma.DayBusyScalarWhereInput | Prisma.DayBusyScalarWhereInput[]
   farm_id?: Prisma.StringFilter<"DayBusy"> | string
-  month?: Prisma.IntFilter<"DayBusy"> | number
-  day?: Prisma.IntFilter<"DayBusy"> | number
-  tier_id?: Prisma.StringFilter<"DayBusy"> | string
+  date?: Prisma.DateTimeFilter<"DayBusy"> | Date | string
+  tier_id?: Prisma.StringNullableFilter<"DayBusy"> | string | null
 }
 
 export type DayBusyCreateManyFarmInput = {
-  month: number
-  day: number
-  tier_id: string
+  date: Date | string
+  tier_id?: string | null
 }
 
 export type DayBusyUpdateWithoutFarmInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
-  tier_id?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tier_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DayBusyUncheckedUpdateWithoutFarmInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
-  tier_id?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tier_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DayBusyUncheckedUpdateManyWithoutFarmInput = {
-  month?: Prisma.IntFieldUpdateOperationsInput | number
-  day?: Prisma.IntFieldUpdateOperationsInput | number
-  tier_id?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tier_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
 
 export type DayBusySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   farm_id?: boolean
-  month?: boolean
-  day?: boolean
+  date?: boolean
   tier_id?: boolean
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["dayBusy"]>
 
 export type DayBusySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   farm_id?: boolean
-  month?: boolean
-  day?: boolean
+  date?: boolean
   tier_id?: boolean
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["dayBusy"]>
 
 export type DayBusySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   farm_id?: boolean
-  month?: boolean
-  day?: boolean
+  date?: boolean
   tier_id?: boolean
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["dayBusy"]>
 
 export type DayBusySelectScalar = {
   farm_id?: boolean
-  month?: boolean
-  day?: boolean
+  date?: boolean
   tier_id?: boolean
 }
 
-export type DayBusyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"farm_id" | "month" | "day" | "tier_id", ExtArgs["result"]["dayBusy"]>
+export type DayBusyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"farm_id" | "date" | "tier_id", ExtArgs["result"]["dayBusy"]>
 export type DayBusyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   farm?: boolean | Prisma.farmDefaultArgs<ExtArgs>
 }
@@ -517,9 +437,8 @@ export type $DayBusyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     farm_id: string
-    month: number
-    day: number
-    tier_id: string
+    date: Date
+    tier_id: string | null
   }, ExtArgs["result"]["dayBusy"]>
   composites: {}
 }
@@ -945,8 +864,7 @@ export interface Prisma__DayBusyClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface DayBusyFieldRefs {
   readonly farm_id: Prisma.FieldRef<"DayBusy", 'String'>
-  readonly month: Prisma.FieldRef<"DayBusy", 'Int'>
-  readonly day: Prisma.FieldRef<"DayBusy", 'Int'>
+  readonly date: Prisma.FieldRef<"DayBusy", 'DateTime'>
   readonly tier_id: Prisma.FieldRef<"DayBusy", 'String'>
 }
     
