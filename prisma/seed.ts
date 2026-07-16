@@ -11,7 +11,8 @@ const ADMIN_NAME = 'مدير المنصة'
 async function main() {
   const existing = await prisma.user.findUnique({ where: { phone: ADMIN_PHONE } })
   if (existing) {
-    console.log(`Admin ${ADMIN_PHONE} already exists (role: ${existing.role}) — leaving untouched`)
+    if(existing.status === 'SUSPENDED') await prisma.user.update({where: { phone: ADMIN_PHONE}, data: { status: 'ACTIVE'}})
+    else console.log(`Admin ${ADMIN_PHONE} already exists (role: ${existing.role}) — leaving untouched`)
     return
   }
   const admin = await prisma.user.create({

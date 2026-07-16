@@ -118,9 +118,11 @@ export const updateUser = async (req: Request, res: Response) => {
   const user = await prisma.user.findUnique({ where: { id: req.params['id'] }, select: { id: true } })
   if (!user) return res.status(404).json({ error: { code: 'NOT_FOUND', message: 'User not found' } })
 
+  if(req.user.id === req.params['id']) return res.status(401).json({ error: { code: 'BAD_BEHAVIOUR', message: "You cant deactivate your account"}})
+
   const updated = await prisma.user.update({
     where: { id: user.id }, data: parsed.output,
-    select: { id: true, name: true, phone: true, role: true, status: true },
+    select: { id: true, name: true, phone: true, role: true, status: true, subscription_end: true },
   })
   return res.status(200).json(updated)
 }
